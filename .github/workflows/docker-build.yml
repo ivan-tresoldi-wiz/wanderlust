@@ -50,4 +50,4 @@ jobs:
       run: ./wizcli docker scan --image $TAG --policy "$POLICY"
 
     - name: Push the Docker image
-      run: docker push $TAG
+      run: docker push wanderlust:$TAG
