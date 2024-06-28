@@ -16,7 +16,7 @@ COPY . .
 # Expose the port that the app runs on
 EXPOSE 9000
 
-USER root
+# USER root
 
 # Start the application
 CMD ["node", "index.js"]
