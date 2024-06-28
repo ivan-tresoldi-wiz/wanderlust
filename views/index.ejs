@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1><%= title %></h1>
+      <p><%= message %></p>
+      <p><strong>API Key (not secure):</strong> <%= apiKey %></p>
+      <% if (isVulnerableVersion && userInput === 'process.env') { %>
+        <p>Environment Variables:</p>
+        <pre><%= JSON.stringify(env, null, 2) %></pre>
+      <% } %>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" id="play-game-button">Play Snake Game</a> <span class="new-label">NEW</span></li>
+    </ul>
+  </nav>
+
+  <section id="destinations">
+    <h2>Popular Destinations</h2>
+    <div class="gallery">
+      <img src="/images/destination1.jpg" alt="Destination 1">
+      <img src="/images/destination2.jpg" alt="Destination 2">
+      <img src="/images/destination3.jpg" alt="Destination 3">
+      <img src="/images/destination4.jpg" alt="Destination 4">
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <p>We offer a variety of travel-related services including flight bookings, hotel reservations, guided tours, and more.</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Wanderlust Travel Agency has been helping customers find their perfect vacations for over 20 years. Our experienced agents are here to assist you every step of the way.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions or need assistance? Reach out to us at <a href="mailto:info@wanderlusttravel.com">info@wanderlusttravel.com</a> or call us at (555) 123-4567.</p>
+  </section>
+
+  <section id="game" style="display: none;">
+    <h2>Play Snake Game</h2>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <script src="/script.js"></script>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Wanderlust Travel Agency. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('play-game-button').addEventListener('click', function(event) {
+      event.preventDefault();
+      document.getElementById('game').style.display = 'block';
+      document.getElementById('game').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Prevent arrow keys from scrolling the page
+    window.addEventListener("keydown", function(e) {
+      if(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+      }
+    }, false);
+  </script>
+</body>
+</html>
