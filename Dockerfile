@@ -1,17 +1,14 @@
-# Use the official Node.js image as the base image
-FROM node:14
+# Use Ubuntu image as the base image
+FROM ubuntu:latest
 
 # Set the working directory
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+COPY package*.json index.js public views ./
 
 # Install the dependencies
 RUN npm install
-
-# Copy the rest of the application code to the working directory
-COPY . .
 
 # Expose the port that the app runs on
 EXPOSE 9000
