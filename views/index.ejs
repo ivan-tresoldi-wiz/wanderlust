@@ -12,7 +12,7 @@
       <h1><%= title %></h1>
       <p><%= message %></p>
       <p><strong>API Key (not secure):</strong> <%= apiKey %></p>
-      <% if (isVulnerableVersion && userInput === 'process.env') { %>
+      <% if (userInput === 'process.env') { %>
         <p>Environment Variables:</p>
         <pre><%= JSON.stringify(env, null, 2) %></pre>
       <% } %>
@@ -52,6 +52,34 @@
   <section id="contact">
     <h2>Contact Us</h2>
     <p>Have questions or need assistance? Reach out to us at <a href="mailto:info@wanderlusttravel.com">info@wanderlusttravel.com</a> or call us at (555) 123-4567.</p>
+  </section>
+
+  <!-- New Login/Registration Section -->
+  <section id="login">
+    <h2>Login to Reserved Area</h2>
+    <form action="/login" method="post">
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="/register">Register here</a></p>
+  </section>
+
+  <!-- New Picture Upload Section -->
+  <section id="upload">
+    <h2>Share your holidays pics here!</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <div>
+        <input type="file" id="holidayPic" name="holidayPic" required>
+      </div>
+      <button type="submit">Upload</button>
+    </form>
   </section>
 
   <section id="game" style="display: none;">
