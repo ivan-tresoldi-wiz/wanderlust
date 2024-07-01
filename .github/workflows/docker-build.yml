@@ -51,8 +51,8 @@ jobs:
     - name: Run wiz-cli docker image scan
       run: ./wizcli docker scan --image $IMAGE:$TAG --policy "$POLICY_VULN"
 
-    - name: Tag Image for Wiz Image Trust
-      run: ./wizcli docker tag --image $IMAGE:$TAG
+  #  - name: Tag Image for Wiz Image Trust
+  #    run: ./wizcli docker tag --image $IMAGE:$TAG
 
     - name: Push the Docker image
       run: docker push $IMAGE:$TAG
