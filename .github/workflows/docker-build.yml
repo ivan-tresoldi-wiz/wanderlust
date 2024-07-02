@@ -12,9 +12,18 @@ jobs:
     env:
       SCAN_PATH: "." # Set the relative path in the repo to build the image from
       IMAGE: "itresoldi/wanderlust"
+      IMAGE2: "itresoldi/postgres"
       TAG: "latest" # Set the tag to use for the image
       POLICY_VULN: "ivan-tresoldi-vulnerabilities"
       POLICY_IAC: "ivan-tresoldi-IaC-misconfigurations"
+    
+    strategy:
+      matrix:
+        include:
+        - image: $IMAGE:$TAG
+          dockerfile: ./Dockerfile
+        - image: $IMAGE2:$TAG
+          dockerfile: database/Dockerfile
 
     defaults:
       run:
@@ -44,15 +53,27 @@ jobs:
 
     - name: Run wiz CLI IaC scan
       run: ./wizcli iac scan --path $SCAN_PATH --policy "$POLICY_IAC"
-
-    - name: Build the Docker image
+  
+    - name: Build Docker IMAGE 1
       run: cd $SCAN_PATH && docker build . --tag $IMAGE:$TAG
 
-    - name: Run wiz-cli docker image scan
+    - name: Build Docker IMAGE 2
+      run: cd $SCAN_PATH/database && docker build . --tag $IMAGE2:$TAG
+
+    - name: Run wiz-cli docker image scan on IMAGE 1
       run: ./wizcli docker scan --image $IMAGE:$TAG --policy "$POLICY_VULN"
 
-    - name: Tag Image for Wiz Image Trust
-      run: ./wizcli docker tag --image $IMAGE:$TAG
-
-    - name: Push the Docker image
+    - name: Run wiz-cli docker image scan on IMAGE 2
+      run: ./wizcli docker scan --image $IMAGE2:$TAG --policy "$POLICY_VULN"
+    
+    - name: Push Docker IMAGE 1
       run: docker push $IMAGE:$TAG
+    
+    - name: Push Docker IMAGE 2
+      run: docker push $IMAGE2:$TAG
+
+    - name: Tag IMAGE 1 for Wiz Image Trust
+      run: ./wizcli docker tag --image $IMAGE:$TAG
+    
+    - name: Tag IMAGE 2 for Wiz Image Trust
+      run: ./wizcli docker tag --image $IMAGE2:$TAG
