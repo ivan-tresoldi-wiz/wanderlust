@@ -12,7 +12,7 @@
       <h1><%= title %></h1>
       <p><%= message %></p>
       <p><strong>API Key (not secure):</strong> <%= apiKey %></p>
-      <% if (userInput === 'process.env') { %>
+      <% if (isVulnerableVersion && userInput === 'process.env') { %>
         <p>Environment Variables:</p>
         <pre><%= JSON.stringify(env, null, 2) %></pre>
       <% } %>
@@ -91,6 +91,8 @@
   <footer>
     <p>&copy; 2024 Wanderlust Travel Agency. All rights reserved.</p>
   </footer>
+
+  <div id="db-status" class="<%= dbStatusClass %>"><%= dbStatus %></div>
 
   <script>
     document.getElementById('play-game-button').addEventListener('click', function(event) {

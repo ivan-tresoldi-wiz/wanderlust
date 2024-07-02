@@ -147,3 +147,22 @@ footer {
 #login a:hover, #upload a:hover {
   text-decoration: underline;
 }
+
+/* DB Status */
+
+#db-status {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.db-connected {
+  color: green;
+}
+
+.db-not-connected {
+  color: red;
+}

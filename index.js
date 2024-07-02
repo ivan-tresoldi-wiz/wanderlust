@@ -2,9 +2,20 @@ const express = require('express');
 const path = require('path');
 const _ = require('lodash');
 const ejs = require('ejs');
+const { Pool } = require('pg');
+require('dotenv').config();
 
 const app = express();
 const port = 9000;
+
+// PostgreSQL pool setup
+const pool = new Pool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+});
 
 // Set fake environment variables
 process.env.PATH = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin';
@@ -40,10 +51,32 @@ app.set('views', path.join(__dirname, 'views'));
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  let dbStatus = 'DB not Connected';
+  let dbStatusClass = 'db-not-connected';
+
+  try {
+    const client = await pool.connect();
+    console.log('Connected to the PostgreSQL database.');
+    dbStatus = 'DB Connected';
+    dbStatusClass = 'db-connected';
+    client.release();
+  } catch (err) {
+    console.error('Error connecting to the PostgreSQL database:', err);
+  }
+
   const userInput = req.query.userInput || '';
   const isVulnerableVersion = versionCondition(ejsVersion);
-  res.render('index', { title: 'Wanderlust Travel Agency', message: 'Welcome to Wanderlust Travel Agency', apiKey: FAKE_API_KEY, userInput: userInput, env: process.env, isVulnerableVersion });
+  res.render('index', { 
+    title: 'Wanderlust Travel Agency', 
+    message: 'Welcome to Wanderlust Travel Agency', 
+    apiKey: FAKE_API_KEY, 
+    userInput: userInput, 
+    env: process.env, 
+    isVulnerableVersion,
+    dbStatus,
+    dbStatusClass
+  });
 });
 
 app.get('/users', (req, res) => {
