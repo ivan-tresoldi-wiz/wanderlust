@@ -18,3 +18,14 @@ spec:
         image: itresoldi/wanderlust:latest
         ports:
         - containerPort: 9000
+        env:
+        - name: DB_HOST
+          value: "postgres"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_USER
+          value: "admin"
+        - name: DB_PASSWORD
+          value: "adminpassword"
+        - name: DB_NAME
+          value: "wanderlust"
