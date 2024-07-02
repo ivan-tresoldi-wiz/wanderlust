@@ -18,6 +18,9 @@ spec:
         image: itresoldi/wanderlust:latest
         ports:
         - containerPort: 9000
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN", "SYS_TIME", "CAP_SYS_ADMIN"]
         env:
         - name: DB_HOST
           value: "postgres"
