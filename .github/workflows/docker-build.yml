@@ -43,7 +43,7 @@ jobs:
         WIZ_CLIENT_SECRET: ${{ secrets.WIZ_CLIENT_SECRET }}
 
     - name: Run wiz CLI IaC scan
-      run: ./wizcli iac scan --path $SCAN_PATH --policy "$POLICY_IAC"
+      run: ./wizcli iac scan --path $SCAN_PATH/aws --policy "$POLICY_IAC"
   
     - name: Build Docker Image
       run: cd $SCAN_PATH && docker build . --tag $IMAGE:$TAG
