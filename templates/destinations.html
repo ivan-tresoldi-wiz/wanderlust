@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - Wanderlust Travel Agency</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Wanderlust Travel Agency</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/destinations" class="active">Destinations</a>
+            <a href="/packages">Packages</a>
+            <a href="/contact">Contact</a>
+            <a href="/login">Login</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Our Destinations</h2>
+        <div class="destination-grid">
+            <div class="destination-card">
+                <img src="https://source.unsplash.com/random/800x600?rome" alt="Rome">
+                <h3>Rome, Italy</h3>
+                <p>Explore ancient history and enjoy delicious cuisine</p>
+            </div>
+            <div class="destination-card">
+                <img src="https://source.unsplash.com/random/800x600?tokyo" alt="Tokyo">
+                <h3>Tokyo, Japan</h3>
+                <p>Experience the perfect blend of tradition and modernity</p>
+            </div>
+            <div class="destination-card">
+                <img src="https://source.unsplash.com/random/800x600?rio" alt="Rio de Janeiro">
+                <h3>Rio de Janeiro, Brazil</h3>
+                <p>Enjoy vibrant culture and beautiful beaches</p>
+            </div>
+            <div class="destination-card">
+                <img src="https://source.unsplash.com/random/800x600?sydney" alt="Sydney">
+                <h3>Sydney, Australia</h3>
+                <p>Discover iconic landmarks and diverse wildlife</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Wanderlust Travel Agency</p>
+    </footer>
+</body>
+</html>

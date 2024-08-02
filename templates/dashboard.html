@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Wanderlust Travel Agency</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Wanderlust Travel Agency</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/destinations">Destinations</a>
+            <a href="/packages">Packages</a>
+            <a href="/contact">Contact</a>
+            <a href="/login">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Welcome to Your Dashboard</h2>
+        <p>Here you can manage your bookings and account information.</p>
+        <div class="dashboard-content">
+            <h3>Your Upcoming Trips</h3>
+            <ul>
+                <li>Paris, France - June 15, 2024</li>
+                <li>Tokyo, Japan - August 22, 2024</li>
+            </ul>
+            <h3>Account Information</h3>
+            <p>Email: user@example.com</p>
+            <p>Member since: January 1, 2024</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Wanderlust Travel Agency</p>
+    </footer>
+</body>
+</html>

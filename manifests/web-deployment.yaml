@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wanderlust-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wanderlust-web
+  template:
+    metadata:
+      labels:
+        app: wanderlust-web
+    spec:
+      containers:
+      - name: wanderlust-web
+        image: your-ecr-repo/wanderlust-web:latest
+        ports:
+        - containerPort: 9000

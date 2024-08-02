@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Travel Agency</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Wanderlust Travel Agency</h1>
+        <nav>
+            <a href="/" class="active">Home</a>
+            <a href="/destinations">Destinations</a>
+            <a href="/packages">Packages</a>
+            <a href="/contact">Contact</a>
+            <a href="/login">Login</a>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Discover Your Next Adventure</h2>
+            <p>Explore the world with Wanderlust Travel Agency</p>
+            <a href="/packages" class="cta-button">View Our Packages</a>
+        </section>
+        <section class="featured-destinations">
+            <h2>Featured Destinations</h2>
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <img src="https://source.unsplash.com/random/800x600?paris" alt="Paris">
+                    <h3>Paris, France</h3>
+                    <p>Experience the city of love and lights</p>
+                </div>
+                <div class="destination-card">
+                    <img src="https://source.unsplash.com/random/800x600?bali" alt="Bali">
+                    <h3>Bali, Indonesia</h3>
+                    <p>Relax on pristine beaches and explore lush jungles</p>
+                </div>
+                <div class="destination-card">
+                    <img src="https://source.unsplash.com/random/800x600?newyork" alt="New York">
+                    <h3>New York City, USA</h3>
+                    <p>Discover the city that never sleeps</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Wanderlust Travel Agency</p>
+    </footer>
+</body>
+</html>

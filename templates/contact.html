@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Wanderlust Travel Agency</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Wanderlust Travel Agency</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/destinations">Destinations</a>
+            <a href="/packages">Packages</a>
+            <a href="/contact" class="active">Contact</a>
+            <a href="/login">Login</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Wanderlust Travel Agency</p>
+    </footer>
+</body>
+</html>
